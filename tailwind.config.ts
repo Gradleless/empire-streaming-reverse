@@ -26,6 +26,13 @@ export default {
         dark: '#222222',
       },
       keyframes: {
+        'loading-dots': {
+          '0%, 20%': { content: '"Chargement des requêtes."' },
+          '20%, 40%': { content: '"."' },
+          '40%, 60%': { content: '".."' },
+          '60%, 80%': { content: '"..."' },
+          '80%, 100%': { content: '""' },
+        },
         flicker: {
           '0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%': {
             opacity: '0.99',
@@ -37,6 +44,11 @@ export default {
             filter: 'none',
           },
         },
+        'slide-down': {
+          '0%': { maxHeight: '0', opacity: '0' },
+          '100%': { maxHeight: '15rem', opacity: '1' }, // 15rem matches max-h-60
+        },
+
         shimmer: {
           '0%': {
             backgroundPosition: '-700px 0',
@@ -47,8 +59,10 @@ export default {
         },
       },
       animation: {
+        'loading-dots': 'loading-dots 1s steps(5, end) infinite',
         flicker: 'flicker 3s linear infinite',
         shimmer: 'shimmer 1.3s linear infinite',
+        'slide-down': 'slide-down 0.7s ease-out',
       },
     },
   },

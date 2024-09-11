@@ -1,5 +1,41 @@
+import createNextJsObfuscator from 'nextjs-obfuscator';
+
+const withNextJsObfuscator = createNextJsObfuscator(
+  {
+    compact: true,
+    controlFlowFlattening: false,
+    controlFlowFlatteningThreshold: 0.75,
+    disableConsoleOutput: false,
+    domainLock: ['localhost'],
+    domainLockRedirectUrl: 'about:blank',
+    identifierNamesCache: null,
+    identifierNamesGenerator: 'mangled',
+    optionsPreset: 'medium-obfuscation',
+    rotateStringArray: true,
+    seed: 0,
+    selfDefending: true,
+    shuffleStringArray: true,
+    simplify: true,
+    splitStrings: true,
+    splitStringsChunkLength: 10,
+    stringArray: true,
+    stringArrayIndexesType: ['hexadecimal-number'],
+    target: 'browser',
+    sourceMap: true,
+  },
+  {
+    log: true,
+    obfuscateFiles: {
+      buildManifest: true,
+      ssgManifest: true,
+      webpack: true,
+      additionalModules: ['es6-object-assign'],
+    },
+  }
+);
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = withNextJsObfuscator({
   eslint: {
     dirs: ['src'],
   },
@@ -45,6 +81,6 @@ const nextConfig = {
 
     return config;
   },
-};
+});
 
-module.exports = nextConfig;
+export default nextConfig;

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { RiAlarmWarningFill } from 'react-icons/ri';
 
 export const metadata: Metadata = {
-  title: 'Not Found',
+  title: '404, Page non trouvée',
 };
 
 export default function NotFound() {
@@ -15,8 +15,10 @@ export default function NotFound() {
             size={60}
             className='drop-shadow-glow animate-flicker text-red-500'
           />
-          <h1 className='mt-8 text-4xl md:text-6xl'>Page Not Found</h1>
-          <a href='/'>Back to home</a>
+          <h1 className='mt-8 text-4xl md:text-6xl'>
+            Oh non, il semble que tu sois tombé sur une mauvaise page !
+          </h1>
+          <a href='/'>Repars mtn jsp c'que tu fous là</a>
         </div>
       </section>
     </main>
