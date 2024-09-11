@@ -4,6 +4,6 @@
   "updatePinnedDependencies": false,
   "stabilityDays": 2,
   "separateMajorMinor": true,
-  "timezone": "Asia/Jakarta",
+  "timezone": "Europe/Paris",
   "schedule": ["before 11am on Monday"]
 }
