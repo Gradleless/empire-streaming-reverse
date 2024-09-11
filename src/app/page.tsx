@@ -136,20 +136,14 @@ export default function HomePage() {
   };
 
   React.useEffect(() => {
-    if (
-      selectedSeason !== undefined &&
-      selectedEpisode !== undefined &&
-      selectedVF !== undefined
-    ) {
-      if (itemData)
-        handleVideoData(
-          itemData?.id,
-          itemData?.type,
-          selectedVF,
-          selectedEpisode,
-          selectedSeason
-        );
-    }
+    if (itemData)
+      handleVideoData(
+        itemData?.id,
+        itemData?.type,
+        selectedVF,
+        selectedEpisode,
+        selectedSeason
+      );
   }, [selectedSeason, selectedEpisode, selectedVF, itemData]);
 
   return (
