@@ -8,7 +8,7 @@ const withNextJsObfuscator = createNextJsObfuscator(
     disableConsoleOutput: false,
     identifierNamesCache: null,
     identifierNamesGenerator: 'mangled',
-    optionsPreset: 'medium-obfuscation',
+    optionsPreset: 'low-obfuscation',
     rotateStringArray: true,
     seed: 0,
     selfDefending: true,
