@@ -6,8 +6,6 @@ const withNextJsObfuscator = createNextJsObfuscator(
     controlFlowFlattening: false,
     controlFlowFlatteningThreshold: 0.75,
     disableConsoleOutput: false,
-    domainLock: ['localhost'],
-    domainLockRedirectUrl: 'about:blank',
     identifierNamesCache: null,
     identifierNamesGenerator: 'mangled',
     optionsPreset: 'medium-obfuscation',
