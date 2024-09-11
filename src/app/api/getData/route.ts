@@ -6,15 +6,17 @@ import { getData } from '@/lib/empire-streaming';
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   const searchParams = new URLSearchParams(url.search);
-  const referer = request.headers.get('referer');
+  //const referer = request.headers.get('referer');
   const timestamp = request.headers.get('x-timestamp');
   const signature = request.headers.get('x-signature') || '';
 
-  const validReferer = 'http://localhost:3000/';
+  //const validReferer = 'http://localhost:3000/';
 
+  /*
   if (!referer?.startsWith(validReferer)) {
     return NextResponse.json({ error: 'api moved to /v1.5' }, { status: 403 });
   }
+    */
 
   const currentTime = Date.now();
   const requestTime = parseInt(timestamp || '0', 10);
