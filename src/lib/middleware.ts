@@ -1,18 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const rateLimit = new Map<string, { count: number; lastRequest: number }>();
-const LIMIT = 3; // Max requests
-const TIME_FRAME = 2000; // Time frame in milliseconds (1 minute)
+const LIMIT = 7;
+const TIME_FRAME = 5000;
 
 export function rateLimitMiddleware(req: NextRequest) {
-  const ip = req.ip || '127.0.0.1'; // Use IP address for rate limiting
+  const ip = req.ip || '127.0.0.1';
   const currentTime = Date.now();
 
   if (!rateLimit.has(ip)) {
     rateLimit.set(ip, { count: 1, lastRequest: currentTime });
   } else {
     const userData = rateLimit.get(ip);
-    if (userData === undefined) return NextResponse.next();
+    if (userData === undefined)
+      return NextResponse.json(
+        { error: 'User data not found' },
+        { status: 404 }
+      );
 
     if (currentTime - userData.lastRequest < TIME_FRAME) {
       userData.count += 1;
@@ -24,10 +28,10 @@ export function rateLimitMiddleware(req: NextRequest) {
         );
       }
     } else {
-      userData.count = 1; // Reset count after time frame
+      userData.count = 1;
       userData.lastRequest = currentTime;
     }
   }
 
-  return NextResponse.next();
+  return NextResponse.json({ message: 'Request allowed' }, { status: 200 });
 }
