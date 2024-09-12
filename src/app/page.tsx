@@ -120,6 +120,7 @@ export default function HomePage() {
       setItemData(data);
       if (data.seasons) {
         setSelectedSeason(data.seasons[0].seasonNumber);
+        setSelectedEpisode(data.seasons[0].episodes[0].episode);
         handleVideoData(
           id,
           'series',
