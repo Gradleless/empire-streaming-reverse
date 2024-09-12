@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://empire-streaming-bypasser.vercel.app
+
+# Sitemaps
+Sitemap: https://empire-streaming-bypasser.vercel.app/sitemap.xml
