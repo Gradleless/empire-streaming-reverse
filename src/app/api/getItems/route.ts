@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'api moved to /v1.5' }, { status: 403 });
   }
 
-  if (!request.headers.get('x-signature')) {
+  if (!request.headers.get('s')) {
     return NextResponse.json({ error: 'api moved to /v1.5' }, { status: 403 });
   }
 
