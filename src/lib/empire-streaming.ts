@@ -1,53 +1,11 @@
 import {
+  ContentItem,
+  ContentItems,
   ContentVideos,
   Episode,
-  Image,
-  NewEpisode,
+  VideoData,
   VideoInfoByLanguage,
 } from '@/lib/empire-interfaces';
-
-// need to do a file for interfaces
-
-interface ContentItem {
-  id: number;
-  title: string;
-  category: { name: string; id: number }[];
-  univers: { name: string; id: number }[];
-  description: string;
-  originalTitle: string;
-  label: string;
-  image: Image[];
-  season: string;
-  new_episode: NewEpisode;
-  path: string;
-  trailer: string;
-  versions: string[];
-  dateCreatedAt: string;
-  createdAt: string;
-  note: number;
-  year: number;
-  slug: string;
-  universExpo: { img: string; name: string }[];
-  urlPath: string;
-}
-
-interface ContentItems {
-  films: ContentItem[];
-  series: ContentItem[];
-}
-
-interface VideoResponse {
-  name: string;
-  size: number;
-  url: string;
-}
-
-interface VideoData {
-  type: string;
-  typeVideo: string;
-  response: VideoResponse[];
-  status: boolean;
-}
 
 let allItems: ContentItems = { films: [], series: [] };
 
