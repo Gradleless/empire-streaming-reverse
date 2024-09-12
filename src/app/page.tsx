@@ -39,8 +39,8 @@ export default function HomePage() {
     const hashSig: string = await sha256('***REMOVED******REMOVED***:getItems:' + timestamp);
     const response = await fetch(`/api/getItems`, {
       headers: {
-        'x-signature': hashSig,
-        'x-timestamp': timestamp,
+        s: hashSig,
+        x: timestamp,
       },
     });
     if (response.ok) {
@@ -93,8 +93,8 @@ export default function HomePage() {
       `/api/getVideo?id=${id}&type=${type}&episode=${episode}&season=${season}&vf=${vf}`,
       {
         headers: {
-          'x-timestamp': timestamp,
-          'x-signature': signature,
+          x: timestamp,
+          s: signature,
         },
       }
     );
@@ -111,8 +111,8 @@ export default function HomePage() {
     );
     const response = await fetch(`/api/getData?id=${id}&type=${type}`, {
       headers: {
-        'x-signature': signature,
-        'x-timestamp': timestamp,
+        s: signature,
+        x: timestamp,
       },
     });
     if (response.ok) {

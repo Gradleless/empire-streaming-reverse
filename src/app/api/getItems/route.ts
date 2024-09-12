@@ -6,7 +6,7 @@ import { rateLimitMiddleware } from '@/lib/middleware';
 
 export async function GET(request: NextRequest) {
   const referer = request.headers.get('referer');
-  const timestamp = request.headers.get('x-timestamp');
+  const timestamp = request.headers.get('x');
 
   const response = rateLimitMiddleware(request);
   if (response.status !== 200) {
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
     crypto
       .createHash('sha256')
       .update('***REMOVED******REMOVED***:getItems:' + timestamp)
-      .digest('hex') != request.headers.get('x-signature')
+      .digest('hex') != request.headers.get('s')
   ) {
     return NextResponse.json({ error: 'api moved to /v1.5' }, { status: 403 });
   }

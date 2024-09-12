@@ -8,8 +8,8 @@ export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   const searchParams = new URLSearchParams(url.search);
   const referer = request.headers.get('referer');
-  const timestamp = request.headers.get('x-timestamp');
-  const signature = request.headers.get('x-signature') || '';
+  const timestamp = request.headers.get('x');
+  const signature = request.headers.get('s') || '';
 
   const response = rateLimitMiddleware(request);
   if (response.status !== 200) {
