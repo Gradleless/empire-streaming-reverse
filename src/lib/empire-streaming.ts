@@ -137,23 +137,29 @@ async function getVideo(
   if (type === 'series' && episode != undefined && season != undefined) {
     const episodeData = await getEpisodeSerie(season, episode, idContent);
     if (episodeData) slug = await getSlug('serie', episodeData?.id);
-    const isVF = vf
-      ? episodeData?.video_info_premium.vf.find(
-          (video) => video.property === 'Eplayer_light'
-        )?.idVideo
-      : episodeData?.video_info_premium.vostfr.find(
-          (video) => video.property === 'Eplayer_light'
-        )?.idVideo;
+    const isVF =
+      vf && episodeData?.video_info_premium.vf
+        ? episodeData.video_info_premium.vf.find(
+            (video) => video.property === 'Eplayer_light'
+          )?.idVideo
+        : episodeData?.video_info_premium.vostfr
+        ? episodeData.video_info_premium.vostfr.find(
+            (video) => video.property === 'Eplayer_light'
+          )?.idVideo
+        : undefined; // Handle case where neither vf nor vostfr exist
     idVideo = isVF;
   } else {
     const contentData = await getFilm(idContent);
     await getData(idContent, type);
     slug = await getSlug(type, idContent);
-    const isVF = vf
-      ? contentData?.vf.find((video) => video.property === 'Eplayer_light')
-          ?.idVideo
-      : contentData?.vostfr.find((video) => video.property === 'Eplayer_light')
-          ?.idVideo;
+    const isVF =
+      vf && contentData?.vf
+        ? contentData.vf.find((video) => video.property === 'Eplayer_light')
+            ?.idVideo
+        : contentData?.vostfr
+        ? contentData.vostfr.find((video) => video.property === 'Eplayer_light')
+            ?.idVideo
+        : undefined; // Handle case where neither vf nor vostfr exist
     idVideo = isVF;
   }
 
