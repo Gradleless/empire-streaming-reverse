@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { getItems } from '@/lib/empire-streaming';
 import { rateLimitMiddleware } from '@/lib/middleware';
-
+// useless now
 export async function GET(request: NextRequest) {
   const referer = request.headers.get('referer');
   const timestamp = request.headers.get('x');

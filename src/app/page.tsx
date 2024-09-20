@@ -35,17 +35,15 @@ export default function HomePage() {
 
   const fetchItems = async () => {
     setLoading(true);
-    const timestamp = Date.now().toString();
-    const hashSig: string = await sha256('***REMOVED******REMOVED***:getItems:' + timestamp);
-    const response = await fetch(`/api/getItems`, {
-      headers: {
-        s: hashSig,
-        x: timestamp,
-      },
-    });
+    // const timestamp = Date.now().toString();
+    // const hashSig: string = await sha256('***REMOVED******REMOVED***:getItems:' + timestamp);
+    const response = await fetch(
+      `https://empire-streaming.life/api/views/contenitem`
+    );
     if (response.ok) {
-      const data = await response.json();
-      setFixResults(data);
+      const data = await response.json().then((data) => data.contentItem);
+      const newItems = [...data.films, ...data.series];
+      setFixResults(newItems);
     }
     setLoading(false);
   };
