@@ -38,7 +38,7 @@ export default function HomePage() {
     // const timestamp = Date.now().toString();
     // const hashSig: string = await sha256('***REMOVED******REMOVED***:getItems:' + timestamp);
     const response = await fetch(
-      `https://empire-streaming.life/api/views/contenitem`
+      `https://empire-streaming.live/api/views/contenitem`
     );
     if (response.ok) {
       const data = await response.json().then((data) => data.contentItem);

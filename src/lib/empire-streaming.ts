@@ -12,7 +12,7 @@ let allItems: ContentItems = { films: [], series: [] };
 async function getItems(): Promise<ContentItems> {
   if (allItems.films.length === 0 && allItems.series.length === 0) {
     const response = await fetch(
-      'https://empire-streaming.life/api/views/contenitem'
+      'https://empire-streaming.live/api/views/contenitem'
     );
     allItems = await response.json().then((data) => data.contentItem);
   }
@@ -24,7 +24,7 @@ async function getSlug(
   idContent: number
 ): Promise<string> {
   const response = await fetch(
-    'https://empire-streaming.life/api/travelguard/prev',
+    'https://empire-streaming.live/api/travelguard/prev',
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
@@ -59,7 +59,7 @@ export interface ContentData {
 let contentData: ContentData;
 
 async function getData(content: number, type: string): Promise<ContentData> {
-  const url = `https://empire-streaming.life/api/${
+  const url = `https://empire-streaming.live/api/${
     type === 'serie' ? 'series' : 'films_anonymous'
   }/${content}`;
 
@@ -106,7 +106,7 @@ async function getEpisodeSerie(
   idContent: number
 ): Promise<Episode | undefined> {
   const response: ContentVideos = await fetch(
-    `https://empire-streaming.life/api/series/${idContent}`
+    `https://empire-streaming.live/api/series/${idContent}`
   ).then((res) => res.json());
   const seasonData = response.Saison[season];
   const episodeData = seasonData.find(
@@ -119,7 +119,7 @@ async function getFilm(
   idContent: number
 ): Promise<VideoInfoByLanguage | undefined> {
   const response: ContentVideos = await fetch(
-    `https://empire-streaming.life/api/films_anonymous/${idContent}`
+    `https://empire-streaming.live/api/films_anonymous/${idContent}`
   ).then((res) => res.json());
   return response.video_info_premium;
 }
@@ -164,7 +164,7 @@ async function getVideo(
   }
 
   const response = await fetch(
-    'https://empire-streaming.life/api/travelguard/get_data',
+    'https://empire-streaming.live/api/travelguard/get_data',
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
