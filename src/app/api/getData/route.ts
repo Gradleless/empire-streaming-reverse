@@ -21,12 +21,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'api moved to /v1.5' }, { status: 403 });
   }
 
-  const currentTime = Date.now();
-  const requestTime = parseInt(timestamp || '0', 10);
-  if (isNaN(requestTime) || currentTime - requestTime > 10000) {
-    return NextResponse.json({ error: 'api moved to /v1.5' }, { status: 400 });
-  }
-
   const id = searchParams.get('id');
   const type = searchParams.get('type');
 
