@@ -36,7 +36,7 @@ export default function HomePage() {
   const fetchItems = async () => {
     setLoading(true);
     // const timestamp = Date.now().toString();
-    // const hashSig: string = await sha256('***REMOVED******REMOVED***:getItems:' + timestamp);
+    // const hashSig: string = await sha256('deletedpedo:getItems:' + timestamp);
     const response = await fetch(
       `https://empire-streaming.pro/api/views/contenitem`
     );
@@ -105,7 +105,7 @@ export default function HomePage() {
   const handleItemData = async (id: number, type: string) => {
     const timestamp = Date.now().toString();
     const signature = await sha256(
-      '***REMOVED***:getData:' + timestamp + ':' + id + ':' + type
+      'deleted:getData:' + timestamp + ':' + id + ':' + type
     );
     const response = await fetch(`/api/getData?id=${id}&type=${type}`, {
       headers: {

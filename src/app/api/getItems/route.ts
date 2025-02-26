@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
   if (
     crypto
       .createHash('sha256')
-      .update('***REMOVED******REMOVED***:getItems:' + timestamp)
+      .update('deletedpedo:getItems:' + timestamp)
       .digest('hex') != request.headers.get('s')
   ) {
     return NextResponse.json({ error: 'api moved to /v1.5' }, { status: 403 });

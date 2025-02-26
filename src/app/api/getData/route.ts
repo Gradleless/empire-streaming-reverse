@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
     signature !=
     crypto
       .createHash('sha256')
-      .update('***REMOVED***:getData:' + timestamp + ':' + id + ':' + type)
+      .update('deleted:getData:' + timestamp + ':' + id + ':' + type)
       .digest('hex')
   ) {
     return NextResponse.json({ error: 'api moved to /v1.5' }, { status: 403 });
